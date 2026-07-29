@@ -1,37 +1,35 @@
-# V24 Test Report
+# Foresight AD EPI Cycle Workspace v5 — Test Report
 
-Validated in headless Chromium and checked with openpyxl.
+**Test date:** 30 July 2026  
+**Browser engine:** Headless Chromium
 
-## Passed
+## Static checks
 
-- Application loads with the V24 title.
-- Browser Excel generator reports ready without a localhost service.
-- EPI Generate Model downloads a valid `.xlsx` file.
-- Generated EPI workbook opens and contains:
-  - Model Information
-  - Model Architecture
-  - Input Register
-  - Assumptions
-  - Forecast Outputs
-  - Patient Potential Tower
-  - Validation
-- Market Generate Model downloads a valid `.xlsx` file.
-- Generated Market workbook opens and contains:
-  - Model Setup
-  - Market Inputs
-  - Forecast Outputs
-  - SKU Structure
-  - Validation
-- EPI scenario hover displays Base, Strong, and Weak values.
-- Epidemiology hover displays Prevalence, Diagnosed, Treated, and Eligible values.
-- Patient Potential Tower terminology is visible in the EPI workspace.
-- Model Builder controls use the main page scroll; the controls container has no nested scrolling.
+- HTML parsed successfully.
+- Inline JavaScript passed `node --check`.
+- No external scripts, stylesheets or web assets are required.
+- Signals is absent from the left navigation.
 
-## Example hover checks
+## Workflow checks
 
-- Scenario 2031: Base, illustrative Strong, and illustrative Weak all displayed.
-- Epidemiology 2031: Prevalence, Diagnosed, Treated, and Eligible all displayed.
+- Home loads as the default page.
+- Model Library opens from the left navigation.
+- Home return works.
+- Continue Workspace opens the Cycle 4 entry page.
+- Continue Cycle Review opens the analytical workspace.
+- Scenario Simulator opens.
+- Compare Scenarios opens and renders saved scenarios.
+- Explore opens from the left navigation.
+- Help & data dictionary opens from the profile menu.
 
-## Note
+## Profile checks
 
-The icon font is loaded from the Tabler CDN. Core navigation, charts, Excel generation, and downloads do not depend on that icon font.
+- Avatar opens the account menu.
+- Menu shows Anna Meier, a.meier@demopharma.eu and Forecasting Lead · EU.
+- Profile, Preferences and Notification settings open the correct settings panel.
+- Account modal closes correctly.
+- Sign out is intentionally disabled in the static showcase and returns visible feedback.
+
+## Runtime result
+
+No page errors or browser-console errors were recorded during the tested workflows.

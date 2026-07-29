@@ -1,29 +1,64 @@
-# Foresight V24 — Deployable Forecasting Demo
+# Foresight AD EPI Cycle Workspace v5
 
-A static demonstration web app for the Foresight AI-enabled pharma forecasting platform.
+A self-contained static demo of the Foresight AI-enabled pharma forecasting platform, focused on **Atopic Dermatitis · Product X**, forecast cycles and governed scenario working.
 
-## What is fixed in V24
+## Deployable file
 
-- **Generate Model works in a hosted static site**. Excel generation runs in the browser and downloads a formula-wired `.xlsx` workbook. No localhost service or Python backend is required.
-- Base, Strong, and Weak EPI lines are visually separated for the demo and show all three values on hover.
-- Epidemiology trend charts show Prevalence, Diagnosed, Treated, and Eligible values on hover.
-- **Patient Flow / Patient Funnel** is renamed **Patient Potential Tower** throughout the visible interface.
-- The existing EPI and Market workspaces, Scenario Simulators, Home, Model Library, Upload flow, Ask AI, Sources, and Validation are retained.
+`index.html` contains the complete application, styling, data and JavaScript. It does not require a build step or backend.
 
-## Project structure
+## Included experience
 
-```text
-index.html
-vercel.json
-.nojekyll
-assets/
-  js/v24-fixes.js
-  vendor/jszip.min.js
+- Forecasting Home / Cockpit
+- Create, Import and Continue entry points
+- Model Library with Original Approved Base and Forecast Cycles 1–4
+- Cycle Workspace entry and readiness review
+- Overview
+- Patient Potential Tower
+- Market Landscape
+- Product Performance
+- Scenario Simulator with 17 levers, visible Base values, saved scenarios and comparison
+- Explore evidence workspace
+- Contextual Ask AI questions and answers
+- Reports and Data Dictionary
+- Restored profile dropdown and account settings
+
+## Profile menu
+
+The top-right avatar opens:
+
+- Profile
+- Preferences
+- Notification settings
+- Help & data dictionary
+- Sign out
+
+## Update an existing GitHub repository
+
+1. Unzip this package.
+2. Copy the contents of `foresight-ad-epi-cycle-workspace-v5/` into the **repository root**.
+3. Replace the existing `index.html`.
+4. Keep or replace `vercel.json` with the included version.
+5. Commit and push to the branch connected to Vercel.
+6. Vercel should redeploy automatically after the push.
+
+Example Git commands:
+
+```bash
+git add .
+git commit -m "Update Foresight AD EPI cycle workspace to v5"
+git push
 ```
 
-## Run locally
+## Deploy directly to Vercel
 
-From the project root:
+Import the GitHub repository as a static project.
+
+- Framework preset: **Other**
+- Build command: leave blank
+- Output directory: leave blank
+- Root directory: repository root
+
+## Run locally
 
 ```bash
 python -m http.server 8080
@@ -31,62 +66,6 @@ python -m http.server 8080
 
 Open `http://localhost:8080`.
 
-Use a local web server rather than double-clicking `index.html`; browsers restrict some file-download and asset behaviours under `file://`.
-
-## Deploy to Vercel
-
-### Git-connected deployment
-
-1. Push the contents of this folder to the root of a GitHub repository.
-2. Import the repository in Vercel.
-3. Use **Other** / static project settings. No build command is required and the project root is the output.
-4. Deploy. Future pushes to the connected repository create new deployments.
-
-### Vercel CLI
-
-From this folder:
-
-```bash
-vercel
-vercel --prod
-```
-
-Official documentation:
-- https://vercel.com/docs/deployments/overview
-- https://vercel.com/docs/cli/deploy
-
-## Deploy to GitHub Pages
-
-1. Push this folder to a branch.
-2. In the repository, open **Settings → Pages**.
-3. Select **Deploy from a branch**, then choose the branch and `/(root)`.
-4. Save.
-
-Official documentation:
-- https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
-
-## Excel generation
-
-The browser creates a valid `.xlsx` workbook using the packaged Excel ZIP writer. The EPI model contains:
-
-- Model Information
-- Model Architecture
-- Input Register
-- Assumptions
-- Base / Strong / Weak forecast outputs
-- Patient Potential Tower
-- Validation
-
-The Market model contains:
-
-- Model Setup
-- Market Inputs
-- Baseline and Event-Adjusted outputs
-- SKU Structure
-- Validation
-
-Inputs are visually distinguished from formulas in the workbook. The generated model is a governed draft and should be reviewed before business use.
-
 ## Public deployment note
 
-This public-safe package excludes the uploaded source workbooks and disables source-workbook download. Excel model generation and scenario exports remain functional.
+The package does not contain the confidential source forecasting workbook. It contains demo data and workbook-derived interface values for the prototype only.

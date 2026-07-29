@@ -105,6 +105,12 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 @media(max-width:760px){.account-menu{right:-8px;width:min(292px,calc(100vw - 24px))}.account-panel-grid{grid-template-columns:1fr}.account-panel-nav{display:grid;grid-template-columns:repeat(3,1fr)}.account-panel-content{border-left:0;border-top:1px solid var(--line);padding:12px 0 0}.account-setting{grid-template-columns:1fr}}
 
 @media(max-width:900px){.compare-controls{grid-template-columns:1fr}.saved-scenario-card{grid-template-columns:1fr}.panel-head{flex-direction:column}}
+
+/* V24 Model Builder integration — isolated so the rest of the V5 platform remains unchanged */
+.builder-frame-wrap{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:780px;height:calc(100vh - 150px);box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.builder-frame{display:block;width:100%;height:100%;border:0;background:#f6f7f9}
+@media(max-width:900px){.builder-frame-wrap{height:calc(100vh - 130px);min-height:720px}}
+
 </style>
 </head>
 <body>
@@ -181,9 +187,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 <div class="page-head"><div><div class="eyebrow">Build</div><h2>Import an Existing Model</h2><p class="sub">Upload a Foresight-generated EPI workbook, validate its structure and create a forecast workspace without changing the source file.</p></div><div class="head-actions"><button class="btn" onclick="showHome()">Back to Home</button></div></div>
 <div class="card import-card"><div class="upload-drop" id="uploadDrop" onclick="document.getElementById('importFileInput').click()"><div class="upload-glyph"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M4 20h16"></path></svg></div><b>Upload forecast workbook</b><p>Choose or drop an .xlsx, .xlsm or .csv file. The original file remains unchanged.</p><button class="btn red" type="button">Choose file</button><input accept=".xlsx,.xlsm,.csv" hidden="" id="importFileInput" onchange="handleImportFile(this)" type="file"/></div><div class="import-review hidden" id="importReview"></div></div>
 </section><section class="screen" id="screen-builder">
-<div class="page-head"><div><div class="eyebrow">Build</div><h2>Create a New Model</h2><p class="sub">Configure a governed EPI-based forecast model. The current demo keeps the Atopic Dermatitis structure and generates the model workbook after review.</p></div><div class="head-actions"><button class="btn" onclick="showHome()">Back to Home</button></div></div>
-<div class="builder-steps"><span class="active">1 · Model information</span><span>2 · Patient-flow structure</span><span>3 · Product and conversion</span><span>4 · Review</span></div>
-<div class="card builder-card"><div class="grid-2"><div class="field"><label>Forecast name</label><input id="builderName" value="Atopic Dermatitis · Product X"/></div><div class="field"><label>Country</label><select><option>United States</option></select></div><div class="field"><label>Disease / indication</label><input value="Atopic Dermatitis"/></div><div class="field"><label>Product</label><input value="Product X"/></div><div class="field"><label>Start year</label><select><option>2026</option></select></div><div class="field"><label>End year</label><select><option>2040</option></select></div></div><div class="builder-note"><b>Model family:</b> EPI-based forecast · Prevalence-led patient funnel · Severity segmentation · Product uptake, erosion, volume and revenue conversion.</div><div class="head-actions"><button class="btn" onclick="showLibrary()">Save draft</button><button class="btn red" onclick="toast('Model information saved. Patient-flow structure is ready for configuration.')">Continue setup</button></div></div>
+<div class="page-head"><div><div class="eyebrow">Build</div><h2>Create a New Model</h2><p class="sub">Configure the complete V24 EPI-based or Market-based model architecture, review the model flow, and generate the governed model workbook.</p></div><div class="head-actions"><button class="btn" onclick="showHome()">Back to Home</button></div></div>
+<div class="builder-frame-wrap"><iframe class="builder-frame" id="v24ModelBuilderFrame" src="model-builder.html?embedded=1" title="Foresight V24 Model Builder" loading="eager"></iframe></div>
 </section><section class="screen" id="screen-library">
 <div class="screen-head"><div><div class="eyebrow">Forecast Library</div><h1>Atopic Dermatitis forecast versions</h1><p class="sub">Open the active quarterly cycle, review approved history, or inspect the locked strategic Base. Scenarios remain nested inside the cycle where they were created.</p></div><div class="head-actions"><button class="btn">Import model</button><button class="btn red">Create new model</button></div></div>
 <div class="card model-card">
@@ -410,7 +415,7 @@ function showScreen(id){qsa('.screen').forEach(x=>x.classList.toggle('active',x.
 function showHome(){showScreen('screen-home');$('crumb').textContent='Home';renderHomeCycleReview();updateAIContext()}
 function showLibrary(){showScreen('screen-library');$('crumb').textContent='Forecast Library';updateAIContext()}
 function showExplore(){showScreen('screen-explore');$('crumb').textContent='Explore · Evidence Intelligence';updateAIContext();filterEvidenceCards()}
-function showBuilder(){showScreen('screen-builder');$('crumb').textContent='Create New Model';updateAIContext()}
+function showBuilder(){showScreen('screen-builder');$('crumb').textContent='Create New Model';const f=$('v24ModelBuilderFrame');if(f&&!f.src)f.src='model-builder.html?embedded=1';updateAIContext()}
 function showImport(){showScreen('screen-import');$('crumb').textContent='Import Existing Model';updateAIContext()}
 function showReports(){showScreen('screen-reports');$('crumb').textContent='Reports';updateAIContext()}
 function showDictionary(){showScreen('screen-dictionary');$('crumb').textContent='Data Dictionary';renderDictionary();updateAIContext()}

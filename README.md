@@ -1,71 +1,63 @@
-# Foresight AD EPI Cycle Workspace v5
+# Foresight — AI-enabled Pharma Forecasting Platform Demo
 
-A self-contained static demo of the Foresight AI-enabled pharma forecasting platform, focused on **Atopic Dermatitis · Product X**, forecast cycles and governed scenario working.
+**Current showcase version: V6.2 — Contextual Ask AI & Scenario Copilot**
 
-## Deployable file
+Foresight is an interactive demonstration of an AI-enabled pharmaceutical forecasting platform.
 
-`index.html` contains the complete application, styling, data and JavaScript. It does not require a build step or backend.
+The current demo showcases:
 
-## Included experience
-
-- Forecasting Home / Cockpit
-- Create, Import and Continue entry points
-- Model Library with Original Approved Base and Forecast Cycles 1–4
-- Cycle Workspace entry and readiness review
-- Overview
+- Forecast Home / Cockpit
+- Forecast cycle management
+- Original Approved Base and historical forecast cycles
+- EPI-based Atopic Dermatitis forecasting
 - Patient Potential Tower
 - Market Landscape
 - Product Performance
-- Scenario Simulator with 17 levers, visible Base values, saved scenarios and comparison
-- Explore evidence workspace
-- Contextual Ask AI questions and answers
+- Gross and Net Revenue views
+- Forecast Cycle Comparison
+- Scenario Simulator
+- Saved Scenario Comparison
+- Contextual Ask AI powered by Ariya Cortex
+- AI-assisted scenario simulation
+- Evidence Intelligence / Explore
+- Validation and governance
 - Reports and Data Dictionary
-- Restored profile dropdown and account settings
+- V24 EPI and Market Model Builder
 
-## Profile menu
+## Current demo model
 
-The top-right avatar opens:
+**Atopic Dermatitis · Product X**
 
-- Profile
-- Preferences
-- Notification settings
-- Help & data dictionary
-- Sign out
+- Model type: EPI-Based Forecast
+- Forecast horizon: 2026–2040
+- Current version: Forecast Cycle 4 · Draft
+- Previous approved version: Forecast Cycle 3
+- Strategic reference: Original Approved Base
 
-## Update an existing GitHub repository
+## Scenario Simulator
 
-1. Unzip this package.
-2. Copy the contents of `foresight-ad-epi-cycle-workspace-v5/` into the **repository root**.
-3. Replace the existing `index.html`.
-4. Keep or replace `vercel.json` with the included version.
-5. Commit and push to the branch connected to Vercel.
-6. Vercel should redeploy automatically after the push.
+Scenarios are created from the Current Cycle Draft and remain separate until explicitly applied.
 
-Example Git commands:
+Ask AI can support the forecaster by:
 
-```bash
-git add .
-git commit -m "Update Foresight AD EPI cycle workspace to v5"
-git push
-```
+- explaining forecast changes;
+- comparing cycles and scenarios;
+- identifying important drivers;
+- proposing scenario assumptions;
+- checking forecasting constraints;
+- staging simulation changes for review;
+- challenging assumptions before submission.
 
-## Deploy directly to Vercel
+AI proposes and explains changes. The governed forecasting model calculates the resulting patients, volume and revenue.
 
-Import the GitHub repository as a static project.
+## Deployment
 
-- Framework preset: **Other**
-- Build command: leave blank
-- Output directory: leave blank
-- Root directory: repository root
+The demo is deployed through GitHub and Vercel.
 
-## Run locally
+Main application:
 
-```bash
-python -m http.server 8080
-```
+`index.html`
 
-Open `http://localhost:8080`.
+Embedded Model Builder:
 
-## Public deployment note
-
-The package does not contain the confidential source forecasting workbook. It contains demo data and workbook-derived interface values for the prototype only.
+`model-builder.html`

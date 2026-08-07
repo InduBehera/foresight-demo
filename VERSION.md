@@ -1,15 +1,8 @@
-# Foresight AD EPI Cycle Workspace — v5.0
+# Foresight V6.2
 
-**Release date:** 30 July 2026
+Contextual Ask AI and Scenario Copilot update.
 
-## Changes in this package
-
-- Restored the complete top-right profile dropdown used in the previously deployed platform.
-- Added Anna Meier account identity, email and Forecasting Lead · EU role badge.
-- Added working Profile, Preferences and Notification settings panels.
-- Connected Help & data dictionary to the existing Data Dictionary page.
-- Added showcase-safe Sign out feedback.
-- Preserved the repaired Home, Model Library, Cycle Workspace, Explore, Ask AI and Scenario Simulator workflows from v4.
-- Preserved saved-scenario management and scenario comparison.
-- Removed the Signals navigation item.
-- Kept the Upload icon for Import Existing Model.
+- Page-specific user questions replace generic Model Updation FAQ prompts.
+- Scenario requests are translated into staged, reviewable model changes.
+- Ask AI answers use the active page, cycle, filters, severity, metric and focus year.
+- The Model Builder remains unchanged from the locked baseline.
